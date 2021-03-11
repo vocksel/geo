@@ -1,28 +1,17 @@
-local getPerimeter = require(script.Parent.getPerimeter)
-local getPolygonArea = require(script.Parent.getPolygonArea)
-local getBoundingBox = require(script.Parent.getBoundingBox)
-local getLargestTriangle = require(script.Parent.getLargestTriangle)
-local getSideLengths = require(script.Parent.getSideLengths)
-local getTriangleArea = require(script.Parent.getTriangleArea)
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local enums = {
-	Line = "Line",
-	Circle = "Circle",
-	Square = "Square",
-	Rectangle = "Rectangle",
-	Triangle = "Triangle",
-}
+local getPerimeter = require(ReplicatedStorage.shared.geometry.getPerimeter)
+local getPolygonArea = require(ReplicatedStorage.shared.geometry.getPolygonArea)
+local getBoundingBox = require(ReplicatedStorage.shared.geometry.getBoundingBox)
+local getLargestTriangle = require(ReplicatedStorage.shared.geometry.getLargestTriangle)
+local getSideLengths = require(ReplicatedStorage.shared.geometry.getSideLengths)
+local getTriangleArea = require(ReplicatedStorage.shared.geometry.getTriangleArea)
+local Shape = require(script.Parent.Shape)
 
-local function range(lower, upper)
-	return function(n)
-		return lower < n and n < upper
-	end
-end
-
-local lineThreshold = range(20, 30)
-local squareThreshold = range(0.50, 0.60)
-local rectangleThreshold = range(0.60, 0.75)
-local triangleThreshold = range(0.60, 0.75)
+local LINE_THRESHHOLD = 30
+local SQUARE_PERCENT = 0.60
+local RECTANGLE_PERCENT = 0.75
+local TRIANGLE_PERCENT = 0.75
 
 local CIRCLE = 4 * math.pi
 
@@ -58,16 +47,16 @@ local function detectShape(hull: {[number]: Vector2})
 
 	-- Triangles tend to have a thinnessRatio that approaches 4pi, so we also
 	-- compare with the triangleRatio to ensure we detect the correct shape/
-	if fuzzyeq(CIRCLE, thinnessRatio, 1) and triangleRatio < triangleThreshold then
-		return enums.Circle
-	elseif squareThreshold(squareRatio) then
-		return enums.Square
-	elseif rectangleThreshold(rectangleRatio) then
-		return enums.Rectangle
-	elseif lineThreshold(thinnessRatio) then
-		return enums.Line
-	elseif triangleThreshold(triangleRatio) then
-		return enums.Triangle
+	if fuzzyeq(CIRCLE, thinnessRatio, 1) and triangleRatio < TRIANGLE_PERCENT then
+		return Shape.Circle
+	elseif squareRatio >= SQUARE_PERCENT then
+		return Shape.Square
+	elseif rectangleRatio >= RECTANGLE_PERCENT then
+		return Shape.Rectangle
+	elseif thinnessRatio >= LINE_THRESHHOLD then
+		return Shape.Line
+	elseif triangleRatio >= TRIANGLE_PERCENT then
+		return Shape.Triangle
 	end
 end
 
