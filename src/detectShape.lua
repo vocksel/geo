@@ -1,11 +1,9 @@
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
-local getPerimeter = require(ReplicatedStorage.shared.geometry.getPerimeter)
-local getPolygonArea = require(ReplicatedStorage.shared.geometry.getPolygonArea)
-local getBoundingBox = require(ReplicatedStorage.shared.geometry.getBoundingBox)
-local getLargestTriangle = require(ReplicatedStorage.shared.geometry.getLargestTriangle)
-local getSideLengths = require(ReplicatedStorage.shared.geometry.getSideLengths)
-local getTriangleArea = require(ReplicatedStorage.shared.geometry.getTriangleArea)
+local getPerimeter = require(script.Parent.getPerimeter)
+local getPolygonArea = require(script.Parent.getPolygonArea)
+local getBoundingBox = require(script.Parent.getBoundingBox)
+local getLargestTriangle = require(script.Parent.getLargestTriangle)
+local getSideLengths = require(script.Parent.getSideLengths)
+local getTriangleArea = require(script.Parent.getTriangleArea)
 local Shape = require(script.Parent.Shape)
 
 local LINE_THRESHHOLD = 30
