@@ -99,6 +99,8 @@ return function()
 	screen.Parent = Players.LocalPlayer.PlayerGui
 
 	local layout = Instance.new("UIListLayout")
+	layout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	layout.Padding = UDim.new(0, 8)
 	layout.Parent = screen
 
 	local container = Instance.new("Frame")
