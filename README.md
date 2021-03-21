@@ -8,44 +8,16 @@ A library for analyzing 2D points to determine the geometric shape they represen
 
 ```lua
 local points = { Vector2.new(x1, y1), Vector2.new(x2, y2), Vector2.new(x3, y3), ... }
-local sorted = sortCounterClockwise(points)
-local hull = getConvexHull(sorted)
 
-if detectShape(hull) == Geo.Shape.Line then
+if detectShape(points) == Geo.Shape.Line then
     print("The hull represents a line")
 end
 ```
 
 ## API
-
-### `sortCounterClockwise(points: Array<Vector2>): Array<Vector2>`
-
-Sorts `points` in counterclockwise order, returning the newly sorted array.
-
-```lua
-local points = { Vector2.new(x1, y1), Vector2.new(x2, y2), Vector2.new(x3, y3), ... }
-local sorted = sortCounterClockwise(points)
-```
-
-This is crucial for `getConvexHull()` which relies on counterclockwise order for calculating the hull.
-
-The bottommost point is selected as an anchor and every other point is sorted by its angle relative to the anchor. The anchor is therefore the first point in the resulting list, and every consecutive point has a counterclockwise angle to the anchor that is bigger than the last.
-
-<!-- This function works by using the bottommost point as an anchor and then sorting all other points by the angle they make relative to the anchor. As such, points that are on the right of the anchor make a smaller angle to it, which then places those points closer to the start of the sorted array. -->
-
-### `getConvexHull(points: Array<Vector2>): Array<Vector2>`
-
-Uses an implementation of the Graham Scan algorithm to construct a convex hull from a list of counterclockwise points.
-
-All points that are within the hull are ommitted from the resulting array.
-
-This gif shows an example of how this works. Notice that only the outer points are connected, and that the bottommost point is highlighted a different color.
-
-![Convex hull generation](images/convex-hull-generation.gif)
-
 ### `detectShape(hull: Array<Vector2>): Shape`
 
-Given a convex hull, this function determines the best possible shape that the hull represents. Returns a Shape enum that you can use for comparison with `Geo.Shape`
+Given a list of points, this function determines the best possible shape that the points represents. Returns a Shape enum that you can use for comparison with `Geo.Shape`
 
 ```lua
 local points = { Vector2.new(x1, y1), Vector2.new(x2, y2), Vector2.new(x3, y3), ... }
@@ -72,6 +44,31 @@ This is an enum representing one of the shapes that `detectShape()` returns. It 
 ## Helpers
 
 The above functions are the core of this library. However, since there are a lot of useful helper functions that are critical to getting to the point of shape recognition, they are exposed on the API as well for all to make use of.
+
+### `sortCounterClockwise(points: Array<Vector2>): Array<Vector2>`
+
+Sorts `points` in counterclockwise order, returning the newly sorted array.
+
+```lua
+local points = { Vector2.new(x1, y1), Vector2.new(x2, y2), Vector2.new(x3, y3), ... }
+local sorted = sortCounterClockwise(points)
+```
+
+This is crucial for `getConvexHull()` which relies on counterclockwise order for calculating the hull.
+
+The bottommost point is selected as an anchor and every other point is sorted by its angle relative to the anchor. The anchor is therefore the first point in the resulting list, and every consecutive point has a counterclockwise angle to the anchor that is bigger than the last.
+
+<!-- This function works by using the bottommost point as an anchor and then sorting all other points by the angle they make relative to the anchor. As such, points that are on the right of the anchor make a smaller angle to it, which then places those points closer to the start of the sorted array. -->
+
+### `getConvexHull(points: Array<Vector2>): Array<Vector2>`
+
+Uses an implementation of the Graham Scan algorithm to construct a convex hull from a list of counterclockwise points.
+
+All points that are within the hull are ommitted from the resulting array.
+
+This gif shows an example of how this works. Notice that only the outer points are connected, and that the bottommost point is highlighted a different color.
+
+![Convex hull generation](images/convex-hull-generation.gif)
 
 ### `getPerimeter(points: Array<Vector2>): number`
 

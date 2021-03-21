@@ -1,3 +1,5 @@
+local sortCounterClockwise = require(script.Parent.sortCounterClockwise)
+local getConvexHull = require(script.Parent.getConvexHull)
 local getPerimeter = require(script.Parent.getPerimeter)
 local getPolygonArea = require(script.Parent.getPolygonArea)
 local getBoundingBox = require(script.Parent.getBoundingBox)
@@ -17,7 +19,10 @@ local function fuzzyeq(a, b, epsilon)
 	return math.abs(a - b) <= epsilon
 end
 
-local function detectShape(hull: {[number]: Vector2})
+local function detectShape(points: {[number]: Vector2})
+	local sorted = sortCounterClockwise(points)
+	local hull = getConvexHull(sorted)
+
 	local hullArea = getPolygonArea(hull)
 	local perimeter = getPerimeter(hull)
 
