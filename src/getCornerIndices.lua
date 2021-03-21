@@ -95,6 +95,10 @@ local function getCornerIndices(points, maxAngle, minAngle)
         local angle = math.deg(a1 + a2)
 
         if minAngle <= angle and angle <= maxAngle then
+			if cornerIndex > #points then
+				cornerIndex -= #points
+			end
+
 			-- print(("\t(%s) %.2f degrees"):format(tostring(maybeCorner), angle))
             table.insert(indices, cornerIndex)
         end

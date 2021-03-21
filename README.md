@@ -40,6 +40,7 @@ This is an enum representing one of the shapes that `detectShape()` returns. It 
 - Triangle
 - Square
 - Rectangle
+- Chevron
 
 ## Helpers
 
