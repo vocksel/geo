@@ -1,9 +1,13 @@
+local sortCounterClockwise = require(script.Parent.sortCounterClockwise)
+local getConvexHull = require(script.Parent.getConvexHull)
 local getPerimeter = require(script.Parent.getPerimeter)
 local getPolygonArea = require(script.Parent.getPolygonArea)
 local getBoundingBox = require(script.Parent.getBoundingBox)
 local getLargestTriangle = require(script.Parent.getLargestTriangle)
 local getSideLengths = require(script.Parent.getSideLengths)
 local getTriangleArea = require(script.Parent.getTriangleArea)
+local isLine = require(script.Parent.isLine)
+local isChevron = require(script.Parent.isChevron)
 local Shape = require(script.Parent.Shape)
 
 local LINE_THRESHHOLD = 30
@@ -17,7 +21,16 @@ local function fuzzyeq(a, b, epsilon)
 	return math.abs(a - b) <= epsilon
 end
 
-local function detectShape(hull: {[number]: Vector2})
+local function detectShape(points: {[number]: Vector2})
+	if isLine(points) then
+		return Shape.Line
+	elseif isChevron(points) then
+		return Shape.Chevron
+	end
+
+	local sorted = sortCounterClockwise(points)
+	local hull = getConvexHull(sorted)
+
 	local hullArea = getPolygonArea(hull)
 	local perimeter = getPerimeter(hull)
 

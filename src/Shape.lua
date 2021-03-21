@@ -4,4 +4,5 @@ return {
 	Square = "Square",
 	Rectangle = "Rectangle",
 	Triangle = "Triangle",
+	Chevron = "Chevron",
 }

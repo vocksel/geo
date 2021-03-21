@@ -8,6 +8,19 @@ A library for analyzing 2D points to determine the geometric shape they represen
 
 ```lua
 local points = { Vector2.new(x1, y1), Vector2.new(x2, y2), Vector2.new(x3, y3), ... }
+
+if detectShape(points) == Geo.Shape.Line then
+    print("The hull represents a line")
+end
+```
+
+## API
+### `detectShape(hull: Array<Vector2>): Shape`
+
+Given a list of points, this function determines the best possible shape that the points represents. Returns a Shape enum that you can use for comparison with `Geo.Shape`
+
+```lua
+local points = { Vector2.new(x1, y1), Vector2.new(x2, y2), Vector2.new(x3, y3), ... }
 local sorted = sortCounterClockwise(points)
 local hull = getConvexHull(sorted)
 
@@ -16,7 +29,22 @@ if detectShape(hull) == Geo.Shape.Line then
 end
 ```
 
-## API
+This function makes a distinction between squares and rectangles. If you do not care which one you get, a conditional that includes both cases is your best course of action.
+
+### `Shape`
+
+This is an enum representing one of the shapes that `detectShape()` returns. It has the following items:
+
+- Line
+- Circle
+- Triangle
+- Square
+- Rectangle
+- Chevron
+
+## Helpers
+
+The above functions are the core of this library. However, since there are a lot of useful helper functions that are critical to getting to the point of shape recognition, they are exposed on the API as well for all to make use of.
 
 ### `sortCounterClockwise(points: Array<Vector2>): Array<Vector2>`
 
@@ -43,36 +71,6 @@ This gif shows an example of how this works. Notice that only the outer points a
 
 ![Convex hull generation](images/convex-hull-generation.gif)
 
-### `detectShape(hull: Array<Vector2>): Shape`
-
-Given a convex hull, this function determines the best possible shape that the hull represents. Returns a Shape enum that you can use for comparison with `Geo.Shape`
-
-```lua
-local points = { Vector2.new(x1, y1), Vector2.new(x2, y2), Vector2.new(x3, y3), ... }
-local sorted = sortCounterClockwise(points)
-local hull = getConvexHull(sorted)
-
-if detectShape(hull) == Geo.Shape.Line then
-    print("The hull represents a line")
-end
-```
-
-This function makes a distinction between squares and rectangles. If you do not care which one you get, a conditional that includes both cases is your best course of action.
-
-### `Shape`
-
-This is an enum representing one of the shapes that `detectShape()` returns. It has the following items:
-
-- Line
-- Circle
-- Triangle
-- Square
-- Rectangle
-
-## Helpers
-
-The above functions are the core of this library. However, since there are a lot of useful helper functions that are critical to getting to the point of shape recognition, they are exposed on the API as well for all to make use of.
-
 ### `getPerimeter(points: Array<Vector2>): number`
 
 Given an ordered list of points, this function counts up the distance between every side length to get the perimeter of the geometric object.
@@ -84,6 +82,17 @@ Returns an array of 4 points that represent the enclosing rectangle (minimum bou
 The following image illustrates how this works. From a convex hull, the enclosing rectangle surrounds the hull entirely.
 
 ![Enclosing rectangle surrounding a convex hull](images/enclosing-rectangle.png)
+
+### `getCornerIndices(points: Array<Vector2>, maxAngle=100, minAngle=10): Array<int>`
+
+Gets an approximation of the number of corners a shape has.
+
+```
+local points = { Vector2.new(), Vector2.new(), ... }
+local indices = getCornerIndices(points)
+```
+
+Returns an array of the indices where a corner exists in the points array. The reason the indices are returned rather than the Vector2 itself is so its easy to traverse relative to the corners. For example, if you have a corner at index 10, then you can consider the points from 1-9 to be a line.
 
 ### `getSideLengths(points: Array<Vector2>): Vector2`
 
