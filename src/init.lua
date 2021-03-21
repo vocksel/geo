@@ -6,6 +6,7 @@ return {
     Shape = require(script.Shape),
 
     -- Helpers
+    getCornerIndices = require(script.getCornerIndices),
     getBoundingBox = require(script.getBoundingBox),
     getLargestTriangle = require(script.getLargestTriangle),
     getPerimeter = require(script.getPerimeter),

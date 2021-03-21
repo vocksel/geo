@@ -85,6 +85,17 @@ The following image illustrates how this works. From a convex hull, the enclosin
 
 ![Enclosing rectangle surrounding a convex hull](images/enclosing-rectangle.png)
 
+### `getCornerIndices(points: Array<Vector2>, maxAngle=100, minAngle=10): Array<int>`
+
+Gets an approximation of the number of corners a shape has.
+
+```
+local points = { Vector2.new(), Vector2.new(), ... }
+local indices = getCornerIndices(points)
+```
+
+Returns an array of the indices where a corner exists in the points array. The reason the indices are returned rather than the Vector2 itself is so its easy to traverse relative to the corners. For example, if you have a corner at index 10, then you can consider the points from 1-9 to be a line.
+
 ### `getSideLengths(points: Array<Vector2>): Vector2`
 
 Given a rectangle, returns the side lengths as a Vector2 where X is the width and Y is the height.
