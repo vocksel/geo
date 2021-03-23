@@ -2,17 +2,19 @@ return {
     -- Core API
     detectShape = require(script.detectShape),
 	getOrientation = require(script.getOrientation),
-    Shape = require(script.Shape),
 	Orientation = require(script.Orientation),
+    Shape = require(script.Shape),
 
     -- Helpers
-	sortCounterClockwise = require(script.sortCounterClockwise),
+    getBoundingBox = require(script.getBoundingBox),
     getConvexHull = require(script.getConvexHull),
     getCornerIndices = require(script.getCornerIndices),
-    getBoundingBox = require(script.getBoundingBox),
     getLargestTriangle = require(script.getLargestTriangle),
     getPerimeter = require(script.getPerimeter),
     getPolygonArea = require(script.getPolygonArea),
     getSideLengths = require(script.getSideLengths),
     getTriangleArea = require(script.getTriangleArea),
+    isLine = require(script.isLine),
+    isChevron = require(script.isChevron),
+	sortCounterClockwise = require(script.sortCounterClockwise),
 }
