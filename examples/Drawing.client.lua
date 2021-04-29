@@ -1,3 +1,8 @@
+--[[
+    This example allows you to draw points on a canvas. After you stop drawing,
+    those points are run through Geo to detect what kind of shape was drawn.
+]]
+
 local GuiService = game:GetService("GuiService")
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")

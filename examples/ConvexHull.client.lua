@@ -1,8 +1,6 @@
 --[[
-	A function that sets up a ScreenGui with some random points so the Graham
+	An example that sets up a ScreenGui with some random points so the Graham
 	Scan implementation can be viewed in action.
-
-	Simply call this module from your client code and it will work.
 ]]
 
 local Players = game:GetService("Players")
