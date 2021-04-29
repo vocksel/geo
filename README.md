@@ -12,7 +12,7 @@ local points = { Vector2.new(x1, y1), Vector2.new(x2, y2), Vector2.new(x3, y3), 
 if Geo.detectShape(points) == Geo.Shape.Line then
     print("The points represent a line")
 
-    local orientation = Geo.getOrientation(points)
+    local orientation = Geo.detectOrientation(points)
 
     if orientation == Geo.Orientation.North then
         print("The line is pointing up")

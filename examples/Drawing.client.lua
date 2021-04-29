@@ -83,7 +83,7 @@ canvas.InputBegan:Connect(function(input)
             mouseMove:Disconnect()
 
             local shape = Geo.detectShape(points) or "None"
-            local orientation = Geo.getOrientation(points) or "None"
+            local orientation = Geo.detectOrientation(points) or "None"
 
             info.Text = ("Shape: %s\nOrientation: %s"):format(shape, orientation)
         end)
