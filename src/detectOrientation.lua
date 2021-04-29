@@ -5,7 +5,7 @@
 	Usage:
 
 	    local points = { Vector2.new(), Vector2.new(), ... }
-	    local orientation = getOrientation(points)
+	    local orientation = detectOrientation(points)
 
 	    if orientation == Geo.Orientation.North then
 	        print("Shape is facing north")
@@ -118,7 +118,7 @@ local function getChevronOrientation(points: Array<Vector2>): string
 	end
 end
 
-local function getOrientation(points: Array<Vector2>): string
+local function detectOrientation(points: Array<Vector2>): string
 	if #points <= 2 then return end
 
 	if isLine(points) then
@@ -128,4 +128,4 @@ local function getOrientation(points: Array<Vector2>): string
 	end
 end
 
-return getOrientation
+return detectOrientation

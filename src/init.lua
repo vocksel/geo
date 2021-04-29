@@ -1,7 +1,7 @@
 return {
     -- Core API
     detectShape = require(script.detectShape),
-	getOrientation = require(script.getOrientation),
+	detectOrientation = require(script.detectOrientation),
 	Orientation = require(script.Orientation),
     Shape = require(script.Shape),
 

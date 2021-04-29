@@ -21,6 +21,7 @@ end
 ```
 
 ## API
+
 ### `detectShape(points: Array<Vector2>): Shape`
 
 Given an ordered list of points, this function determines the best possible shape that the points represent. Returns a Shape enum that you can use for comparison with `Geo.Shape`
@@ -37,14 +38,16 @@ end
 
 This function makes a distinction between squares and rectangles. If you do not care which one you get, a conditional that includes both cases is your best course of action.
 
-### `getOrientation(points: Array<Vector2>): Orientation`
+### `detectOrientation(points: Array<Vector2>): Orientation`
 
-Gets the closest cardinal direction that the points are facing in. This only works for points that make a Line or Chevron shape.
+Gets the closest cardinal direction that the given points are facing in. Returns nil if an orientation cannot be detected.
+
+This function only works for points that make a Line or Chevron shape since circles and rectangles have no discernable facing direction. Triangles are the only shape that may be supported later.
 
 ```lua
 local points = { Vector2.new(x1, y1), Vector2.new(x2, y2), Vector2.new(x3, y3), ... }
 
-local orientation = getOrientation(points)
+local orientation = detectOrientation(points)
 
 if orientation == Geo.Orientation.North then
     print("The shape is facing up")
