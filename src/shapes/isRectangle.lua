@@ -1,5 +1,5 @@
-local getBoundingBox = require(script.Parent.getBoundingBox)
-local getSideLengths = require(script.Parent.getSideLengths)
+local getBoundingBox = require(script.Parent.Parent.getBoundingBox)
+local getSideLengths = require(script.Parent.Parent.getSideLengths)
 
 local RECTANGLE_PERCENT = 0.75
 

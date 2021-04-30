@@ -1,4 +1,4 @@
-local getCornerIndices = require(script.Parent.getCornerIndices)
+local getCornerIndices = require(script.Parent.Parent.getCornerIndices)
 
 type Array<T> = { [number]: T }
 

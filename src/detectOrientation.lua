@@ -20,8 +20,8 @@
 	(N, E, S, W).
 ]]
 
-local isLine = require(script.Parent.isLine)
-local isChevron = require(script.Parent.isChevron)
+local isLine = require(script.Parent.shapes.isLine)
+local isChevron = require(script.Parent.shapes.isChevron)
 local Orientation = require(script.Parent.Orientation)
 
 type Array<T> = { [number]: T }

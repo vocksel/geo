@@ -1,4 +1,4 @@
-local getPerimeter = require(script.Parent.getPerimeter)
+local getPerimeter = require(script.Parent.Parent.getPerimeter)
 
 local function fuzzyeq(a, b, epsilon)
 	return math.abs(a - b) <= epsilon

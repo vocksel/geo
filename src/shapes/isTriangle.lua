@@ -1,5 +1,5 @@
-local getLargestTriangle = require(script.Parent.getLargestTriangle)
-local getTriangleArea = require(script.Parent.getTriangleArea)
+local getLargestTriangle = require(script.Parent.Parent.getLargestTriangle)
+local getTriangleArea = require(script.Parent.Parent.getTriangleArea)
 
 local TRIANGLE_PERCENT = 0.75
 

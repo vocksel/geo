@@ -14,7 +14,7 @@ return {
     getPolygonArea = require(script.getPolygonArea),
     getSideLengths = require(script.getSideLengths),
     getTriangleArea = require(script.getTriangleArea),
-    isLine = require(script.isLine),
-    isChevron = require(script.isChevron),
+    isLine = require(script.shapes.isLine),
+    isChevron = require(script.shapes.isChevron),
 	sortCounterClockwise = require(script.sortCounterClockwise),
 }
