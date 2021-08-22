@@ -1,11 +1,15 @@
+local t = require(script.Parent.Parent.t)
+
 -- This thinness ratio approaches unity, and typically floats around 0.95 when
 -- given points that make a line. We make the certainty a bit less to account
 -- for any curvier lines.
 local LINE_CERTAINTY = 0.85
 
-type Array<T> = { [number]: T }
+local check = t.array(t.Vector2)
 
-local function isLine(points: Array<Vector2>)
+local function isLine(points: { Vector2 })
+	assert(check(points))
+
 	if #points < 2 then
 		return false
 	end

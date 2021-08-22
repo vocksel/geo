@@ -20,11 +20,10 @@
 	(N, E, S, W).
 ]]
 
+local t = require(script.Parent.t)
 local isLine = require(script.Parent.shapes.isLine)
 local isChevron = require(script.Parent.shapes.isChevron)
 local Orientation = require(script.Parent.Orientation)
-
-type Array<T> = { [number]: T }
 
 -- Associates each cardinal angle with its equivalent in degrees. This is used
 -- with finding line orientation.
@@ -39,8 +38,12 @@ local CARDINAL_ANGLES = {
 	{ Orientation.SouthEast, 360 },
 }
 
+local getLineOrientationFromAngleCheck = t.numberPositive
+
 local function getLineOrientationFromAngle(degrees: number)
-	for i=1, #CARDINAL_ANGLES do
+	assert(getLineOrientationFromAngleCheck(degrees))
+
+	for i = 1, #CARDINAL_ANGLES do
 		local pair = CARDINAL_ANGLES[i]
 		local nextPair = CARDINAL_ANGLES[i + 1] or CARDINAL_ANGLES[1]
 
@@ -64,7 +67,11 @@ local function getLineOrientationFromAngle(degrees: number)
 	end
 end
 
-local function getLineOrientation(points: Array<Vector2>): string
+local getLineOrientationCheck = t.array(t.Vector2)
+
+local function getLineOrientation(points: { Vector2 }): string
+	assert(getLineOrientationCheck(points))
+
 	local vec = points[#points] - points[1]
 	local degrees = math.deg(math.acos(vec.X / vec.Magnitude))
 
@@ -74,19 +81,25 @@ local function getLineOrientation(points: Array<Vector2>): string
 		degrees = 360 - degrees
 	end
 
-	return getLineOrientationFromAngle(degrees, CARDINAL_ANGLES)
+	return getLineOrientationFromAngle(degrees)
 end
 
-local function getFarthestCorner(points: Array<Vector2>): Vector2
+local getFarthestCornerCheck = t.array(t.Vector2)
+
+local function getFarthestCorner(points: { Vector2 }): Vector2
+	assert(getFarthestCornerCheck(points))
+
 	-- Need at least 3 points to find the farthest from the start and end points.
-	if #points < 3 then return end
+	if #points < 3 then
+		return
+	end
 
 	local first = points[1]
 	local last = points[#points]
 	local midpoint = (first + last) / 2
 
 	local farthest = midpoint
-	for i=2, #points do
+	for i = 2, #points do
 		local point = points[i]
 
 		if (point - midpoint).Magnitude > (farthest - midpoint).Magnitude then
@@ -97,7 +110,11 @@ local function getFarthestCorner(points: Array<Vector2>): Vector2
 	return farthest
 end
 
-local function getChevronOrientation(points: Array<Vector2>): string
+local getChevronOrientationCheck = t.array(t.Vector2)
+
+local function getChevronOrientation(points: { Vector2 }): string
+	assert(getChevronOrientationCheck(points))
+
 	local midpoint = (points[1] + points[#points]) / 2
 	local farthest = getFarthestCorner(points)
 
@@ -118,8 +135,14 @@ local function getChevronOrientation(points: Array<Vector2>): string
 	end
 end
 
-local function detectOrientation(points: Array<Vector2>): string
-	if #points <= 2 then return end
+local detectOrientationCheck = t.array(t.Vector2)
+
+local function detectOrientation(points: { Vector2 }): string
+	assert(detectOrientationCheck(points))
+
+	if #points <= 2 then
+		return
+	end
 
 	if isLine(points) then
 		return getLineOrientation(points)

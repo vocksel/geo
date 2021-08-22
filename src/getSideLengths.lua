@@ -8,10 +8,15 @@
 	axis.
 ]]
 
-local function getSideLengths(points)
-	local width, height
+local t = require(script.Parent.t)
 
+local check = t.array(t.Vector2)
+
+local function getSideLengths(points)
+	assert(check(points))
 	assert(#points == 4, "To get the side length of a rectangle, there must be exactly 4 points given")
+
+	local width, height
 
 	for i, point in ipairs(points) do
 		local nextPoint = points[i + 1] or points[1]

@@ -7,14 +7,25 @@
 	passing them in!
 ]]
 
+local t = require(script.Parent.t)
+
+local crossCheck = t.tuple(t.Vector2, t.Vector2, t.Vector2)
+
 local function cross(a, b, c)
+	assert(crossCheck(a, b, c))
+
 	return (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x)
 end
 
+local getConvexHullCheck = t.array(t.Vector2)
+
 local function getConvexHull(points: { [number]: Vector2 })
+	assert(getConvexHullCheck(points))
+	assert(#points >= 3, "To get a convex hull there must be at least 3 points")
+
 	local hull = { points[1], points[2] }
 
-	for i=3, #points do
+	for i = 3, #points do
 		local point = points[i]
 
 		-- This filters out colinear points by comparing the current point with

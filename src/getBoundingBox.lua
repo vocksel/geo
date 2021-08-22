@@ -8,7 +8,13 @@
 	drawing a diamon shape, which we don't want.
 ]]
 
-local function getBoundingBox(points)
+local t = require(script.Parent.t)
+
+local check = t.array(t.Vector2)
+
+local function getBoundingBox(points: { Vector2 })
+	assert(check(points))
+
 	if #points <= 4 then
 		return points
 	end

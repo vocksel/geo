@@ -1,3 +1,4 @@
+local t = require(script.Parent.t)
 local sortCounterClockwise = require(script.Parent.sortCounterClockwise)
 local getConvexHull = require(script.Parent.getConvexHull)
 local getPolygonArea = require(script.Parent.getPolygonArea)
@@ -9,7 +10,11 @@ local isSquare = require(script.Parent.shapes.isSquare)
 local isTriangle = require(script.Parent.shapes.isTriangle)
 local Shape = require(script.Parent.Shape)
 
-local function detectShape(points: {[number]: Vector2})
+local check = t.array(t.Vector2)
+
+local function detectShape(points: { [number]: Vector2 })
+	assert(check(points))
+
 	if isLine(points) then
 		return Shape.Line
 	elseif isChevron(points) then

@@ -7,11 +7,21 @@
 	than the last.
 ]]
 
+local t = require(script.Parent.t)
+
+local getPolarAngleCheck = t.tuple(t.Vector2, t.Vector2)
+
 local function getPolarAngle(p1, p2)
+	assert(getPolarAngleCheck(p1, p2))
+
 	return math.atan2(p1.y - p2.y, p1.x - p2.x)
 end
 
+local sortCounterClockwiseCheck = t.array(t.Vector2)
+
 local function sortCounterClockwise(points)
+	assert(sortCounterClockwiseCheck(points))
+
 	local copy = {}
 	for _, point in ipairs(points) do
 		table.insert(copy, point)
