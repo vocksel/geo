@@ -37,16 +37,26 @@
 	at index 10, then you can consider the points from 1-9 to be a line.
 ]]
 
+local t = require(script.Parent.t)
+
+local cycleCheck = t.tuple(t.array(t.any), t.numberPositive)
+
 -- Loops back to the start of the array if the index exceeds the array length.
 -- This is used so we can check if the first point to see if it is a corner.
-local function cycle(array, index)
-    return array[index] or array[index - #array]
+local function cycle(array: table, index: number)
+	assert(cycleCheck(array, index))
+
+	return array[index] or array[index - #array]
 end
 
-local function getCornerIndices(points, maxAngle, minAngle)
+local getCornerIndicesCheck = t.tuple(t.array(t.Vector2), t.numberPositive, t.numberPositive)
+
+local function getCornerIndices(points: { Vector2 }, maxAngle: number, minAngle: number)
+	assert(getCornerIndicesCheck(points, maxAngle, minAngle))
+
 	-- Defaults to an arbitrary number that "feels" right for when a corner
 	-- should occur. Fully customizeable.
-    maxAngle = maxAngle or 100
+	maxAngle = maxAngle or 100
 
 	-- The minimum angle prevents lines from being detected as having corners.
 	-- Since we loop #points + 2 times, this means when we have a line there is
@@ -55,33 +65,33 @@ local function getCornerIndices(points, maxAngle, minAngle)
 	-- this edge  case.
 	minAngle = minAngle or 10
 
-    local indices = {}
+	local indices = {}
 
 	if #points < 3 then
 		return indices
 	end
 
-    for i=1, #points do
+	for i = 1, #points do
 		local cornerIndex = i + 1
 
-        local first: Vector2 = cycle(points, i)
-        local maybeCorner: Vector2 = cycle(points, cornerIndex)
-        local last: Vector2 = cycle(points, i + 2)
+		local first: Vector2 = cycle(points, i)
+		local maybeCorner: Vector2 = cycle(points, cornerIndex)
+		local last: Vector2 = cycle(points, i + 2)
 
 		-- Need to create some vectors that are relative to the first point. If
 		-- these were relative to the origin we would have issues.
-        local v1 = (first - maybeCorner)
-        local v2 = (first - last)
+		local v1 = (first - maybeCorner)
+		local v2 = (first - last)
 
-        -- This is the distance from 'first' that aligns perpendicularly with
-        -- maybeCorner. We can then use this to find the Vector2 that is
-        -- perpendicular.
-        local projection = v1:Dot(v2) / v2.Magnitude
+		-- This is the distance from 'first' that aligns perpendicularly with
+		-- maybeCorner. We can then use this to find the Vector2 that is
+		-- perpendicular.
+		local projection = v1:Dot(v2) / v2.Magnitude
 
-        -- This is the projected point between the 'first' and 'last' point that is
-        -- perpendicular with maybeCorner. We now have two right triangles on
-        -- either side of this point to work with!
-        local point = first:Lerp(last, projection / v2.Magnitude)
+		-- This is the projected point between the 'first' and 'last' point that is
+		-- perpendicular with maybeCorner. We now have two right triangles on
+		-- either side of this point to work with!
+		local point = first:Lerp(last, projection / v2.Magnitude)
 
 		-- Trig time! We just need to calculate the sum of angles we're home
 		-- free! The first angle is super simple, since the opposite side from
@@ -90,21 +100,21 @@ local function getCornerIndices(points, maxAngle, minAngle)
 		-- other side of the projection scaler. We have to start from the last
 		-- vector and go towards the first vector and maybeCorner, but its
 		-- essentially the same math.
-        local a1 = math.asin(projection / v1.Magnitude)
-        local a2 = math.asin((last - point).Magnitude / (last - maybeCorner).Magnitude)
-        local angle = math.deg(a1 + a2)
+		local a1 = math.asin(projection / v1.Magnitude)
+		local a2 = math.asin((last - point).Magnitude / (last - maybeCorner).Magnitude)
+		local angle = math.deg(a1 + a2)
 
-        if minAngle <= angle and angle <= maxAngle then
+		if minAngle <= angle and angle <= maxAngle then
 			if cornerIndex > #points then
 				cornerIndex -= #points
 			end
 
 			-- print(("\t(%s) %.2f degrees"):format(tostring(maybeCorner), angle))
-            table.insert(indices, cornerIndex)
-        end
-    end
+			table.insert(indices, cornerIndex)
+		end
+	end
 
-    return indices
+	return indices
 end
 
 return getCornerIndices

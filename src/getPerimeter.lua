@@ -4,7 +4,13 @@
 	points you will get incorrect results
 ]]
 
-local function getPerimeter(points)
+local t = require(script.Parent.t)
+
+local check = t.array(t.Vector2)
+
+local function getPerimeter(points: { Vector2 })
+	assert(check(points))
+
 	if #points == 1 then
 		return 0
 	elseif #points == 2 then
@@ -12,7 +18,7 @@ local function getPerimeter(points)
 	end
 
 	local perimeter = 0
-	for i=2, #points do
+	for i = 2, #points do
 		perimeter += (points[i - 1] - points[i]).Magnitude
 	end
 	return perimeter

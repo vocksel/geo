@@ -9,9 +9,14 @@
 	Returns an array of the 3 points that compose the maximum-area triangle.
 ]]
 
+local t = require(script.Parent.t)
 local getTriangleArea = require(script.Parent.getTriangleArea)
 
-local function getLargestTriangle(points)
+local check = t.array(t.Vector2)
+
+local function getLargestTriangle(points: { Vector2 })
+	assert(check(points))
+
 	if #points <= 3 then
 		return points
 	end
