@@ -1,40 +1,33 @@
 {
-	"name": "Geo Test Place",
-	"tree": {
-		"$className": "DataModel",
-
-		"ReplicatedStorage": {
-			"$className": "ReplicatedStorage",
-
+    "name": "Geo (Dev)",
+    "tree": {
+        "$className": "DataModel",
+        "ReplicatedStorage": {
+            "$className": "ReplicatedStorage",
             "Geo": {
                 "$path": "src"
             }
         },
-
-		"StarterPlayer":{
-			"$className": "StarterPlayer",
-
+        "ServerScriptService": {
+            "$className": "ServerScriptService",
+            "Tests": {
+                "$path": "tests"
+            }
+        },
+        "StarterPlayer": {
+            "$className": "StarterPlayer",
             "StarterPlayerScripts": {
                 "$className": "StarterPlayerScripts",
-
                 "Examples": {
                     "$path": "examples"
                 }
             }
-		},
-
-        "HttpService": {
-			"$className": "HttpService",
-			"$properties": {
-				"HttpEnabled": true
-			}
-		},
-
+        },
         "Players": {
             "$className": "Players",
             "$properties": {
                 "CharacterAutoLoads": false
             }
         }
-	}
+    }
 }
