@@ -37,13 +37,23 @@
 	at index 10, then you can consider the points from 1-9 to be a line.
 ]]
 
+local t = require(script.Parent.t)
+
+local cycleCheck = t.tuple(t.array(t.any), t.numberPositive)
+
 -- Loops back to the start of the array if the index exceeds the array length.
 -- This is used so we can check if the first point to see if it is a corner.
-local function cycle(array, index)
+local function cycle(array: table, index: number)
+	assert(cycleCheck(array, index))
+
 	return array[index] or array[index - #array]
 end
 
-local function getCornerIndices(points, maxAngle, minAngle)
+local getCornerIndicesCheck = t.tuple(t.array(t.Vector2), t.numberPositive, t.numberPositive)
+
+local function getCornerIndices(points: { Vector2 }, maxAngle: number, minAngle: number)
+	assert(getCornerIndicesCheck(points, maxAngle, minAngle))
+
 	-- Defaults to an arbitrary number that "feels" right for when a corner
 	-- should occur. Fully customizeable.
 	maxAngle = maxAngle or 100

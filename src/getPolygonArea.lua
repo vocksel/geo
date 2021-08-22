@@ -6,7 +6,13 @@
 	conterclockwise order.
 ]]
 
-local function getPolygonArea(points)
+local t = require(script.Parent.t)
+
+local check = t.array(t.Vector2)
+
+local function getPolygonArea(points: { Vector2 })
+	assert(check(points))
+
 	local area = 0
 
 	for i, point in ipairs(points) do

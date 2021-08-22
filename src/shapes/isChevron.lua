@@ -1,8 +1,11 @@
+local t = require(script.Parent.Parent.t)
 local getCornerIndices = require(script.Parent.Parent.getCornerIndices)
 
-type Array<T> = { [number]: T }
+local check = t.array(t.Vector2)
 
-local function isChevron(points: Array<Vector2>): Array<number>
+local function isChevron(points: { Vector2 }): { number }
+	assert(check(points))
+
 	local corners = getCornerIndices(points, 120)
 	local first = points[1]
 	local last = points[#points]
