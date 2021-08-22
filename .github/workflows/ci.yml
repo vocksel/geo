@@ -31,3 +31,5 @@ jobs:
 
       - name: Run tests
         run: run-in-roblox --place Geo.rbxlx --script tests/spec.server.lua
+        env:
+          RUST_BACKTRACE: 1
