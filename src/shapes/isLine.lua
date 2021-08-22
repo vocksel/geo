@@ -6,8 +6,12 @@ local LINE_CERTAINTY = 0.85
 type Array<T> = { [number]: T }
 
 local function isLine(points: Array<Vector2>)
+	if #points < 2 then
+		return false
+	end
+
 	local perimeter = 0
-	for i=1, #points - 1 do
+	for i = 1, #points - 1 do
 		perimeter += (points[i] - points[i + 1]).Magnitude
 	end
 
