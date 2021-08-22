@@ -27,7 +27,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build place file
-        run: rojo build dev.project.json -o import.rbxlx
+        run: rojo build dev.project.json -o Geo.rbxlx
 
       - name: Run tests
-        run: run-in-roblox --place import.rbxlx --script bin/spec.lua
+        run: run-in-roblox --place Geo.rbxlx --script tests/spec.server.lua
