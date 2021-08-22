@@ -40,7 +40,7 @@ local CARDINAL_ANGLES = {
 }
 
 local function getLineOrientationFromAngle(degrees: number)
-	for i=1, #CARDINAL_ANGLES do
+	for i = 1, #CARDINAL_ANGLES do
 		local pair = CARDINAL_ANGLES[i]
 		local nextPair = CARDINAL_ANGLES[i + 1] or CARDINAL_ANGLES[1]
 
@@ -79,14 +79,16 @@ end
 
 local function getFarthestCorner(points: Array<Vector2>): Vector2
 	-- Need at least 3 points to find the farthest from the start and end points.
-	if #points < 3 then return end
+	if #points < 3 then
+		return
+	end
 
 	local first = points[1]
 	local last = points[#points]
 	local midpoint = (first + last) / 2
 
 	local farthest = midpoint
-	for i=2, #points do
+	for i = 2, #points do
 		local point = points[i]
 
 		if (point - midpoint).Magnitude > (farthest - midpoint).Magnitude then
@@ -119,7 +121,9 @@ local function getChevronOrientation(points: Array<Vector2>): string
 end
 
 local function detectOrientation(points: Array<Vector2>): string
-	if #points <= 2 then return end
+	if #points <= 2 then
+		return
+	end
 
 	if isLine(points) then
 		return getLineOrientation(points)

@@ -8,7 +8,7 @@ local function isSquare(hull: { Vector2 }, hullArea: number)
 	local sides = getSideLengths(rectangle)
 	local maxSide = math.max(sides.X, sides.Y)
 
-	return hullArea / maxSide^2 >= SQUARE_PERCENT
+	return hullArea / maxSide ^ 2 >= SQUARE_PERCENT
 end
 
 return isSquare

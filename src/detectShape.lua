@@ -9,7 +9,7 @@ local isSquare = require(script.Parent.shapes.isSquare)
 local isTriangle = require(script.Parent.shapes.isTriangle)
 local Shape = require(script.Parent.Shape)
 
-local function detectShape(points: {[number]: Vector2})
+local function detectShape(points: { [number]: Vector2 })
 	if isLine(points) then
 		return Shape.Line
 	elseif isChevron(points) then

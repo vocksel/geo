@@ -9,7 +9,7 @@ local function isCircle(hull: { Vector2 }, hullArea: number)
 
 	-- This ratio approaches 4pi for circles, so we will then compare that the
 	-- ratio is roughly close to that value for circle detection.
-	local thinnessRatio = perimeter^2 / hullArea
+	local thinnessRatio = perimeter ^ 2 / hullArea
 
 	return fuzzyeq(4 * math.pi, thinnessRatio, 1)
 end

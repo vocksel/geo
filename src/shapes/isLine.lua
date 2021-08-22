@@ -7,7 +7,7 @@ type Array<T> = { [number]: T }
 
 local function isLine(points: Array<Vector2>)
 	local perimeter = 0
-	for i=1, #points - 1 do
+	for i = 1, #points - 1 do
 		perimeter += (points[i] - points[i + 1]).Magnitude
 	end
 

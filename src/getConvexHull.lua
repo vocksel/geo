@@ -14,7 +14,7 @@ end
 local function getConvexHull(points: { [number]: Vector2 })
 	local hull = { points[1], points[2] }
 
-	for i=3, #points do
+	for i = 3, #points do
 		local point = points[i]
 
 		-- This filters out colinear points by comparing the current point with

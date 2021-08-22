@@ -12,7 +12,7 @@ local function getPerimeter(points)
 	end
 
 	local perimeter = 0
-	for i=2, #points do
+	for i = 2, #points do
 		perimeter += (points[i - 1] - points[i]).Magnitude
 	end
 	return perimeter
