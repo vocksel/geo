@@ -2,6 +2,12 @@
 -- run-in-roblox in CI.
 local TestEZ = require(game.ServerScriptService.Tests.TestEZ)
 
-TestEZ.TestBootstrap:run({
+local results = TestEZ.TestBootstrap:run({
 	game.ReplicatedStorage.Geo,
-})
+}, TestEZ.Reporters.TextReporterQuiet)
+
+if results.failureCount > 0 then
+	print("❌ Test run failed")
+else
+	print("✔️ All tests passed")
+end
