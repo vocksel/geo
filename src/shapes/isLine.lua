@@ -10,6 +10,10 @@ local check = t.array(t.Vector2)
 local function isLine(points: { Vector2 })
 	assert(check(points))
 
+	if #points < 2 then
+		return false
+	end
+
 	local perimeter = 0
 	for i = 1, #points - 1 do
 		perimeter += (points[i] - points[i + 1]).Magnitude
