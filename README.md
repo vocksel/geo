@@ -1,5 +1,7 @@
 # Geo
 
+[![CI](https://github.com/vocksel/geo/actions/workflows/ci.yml/badge.svg)](https://github.com/vocksel/geo/actions/workflows/ci.yml)
+
 A library for analyzing 2D points to determine the geometric shape they represent.
 
 ![A full shape recognition example](images/shape-recognition.gif)
@@ -19,6 +21,22 @@ if Geo.detectShape(points) == Geo.Shape.Line then
     end
 end
 ```
+
+## Installation
+
+### Wally
+
+If you are using [Wally](https://github.com/UpliftGames/wally), add the following to your `wally.toml` and run `wally install` to get a copy of the package.
+
+```
+[dependencies]
+Geo = "vocksel/geo@v1.0.0
+```
+
+### Model File
+
+* Download a copy of the rbxm from the [releases page](https://github.com/vocksel/geo/releases/latest) under the Assets section. 
+* Drag and drop the file into Roblox Studio to add it to your experience.
 
 ## API
 
