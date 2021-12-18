@@ -3,30 +3,24 @@
     "tree": {
         "$className": "DataModel",
         "ReplicatedStorage": {
-            "$className": "ReplicatedStorage",
+            "DevPackages": {
+                "$path": "DevPackages"
+            },
             "Geo": {
                 "$path": "src"
             }
         },
         "ServerScriptService": {
-            "$className": "ServerScriptService",
             "Tests": {
                 "$path": "tests"
             }
         },
         "StarterPlayer": {
-            "$className": "StarterPlayer",
             "StarterPlayerScripts": {
                 "$className": "StarterPlayerScripts",
                 "Examples": {
                     "$path": "examples"
                 }
-            }
-        },
-        "Players": {
-            "$className": "Players",
-            "$properties": {
-                "CharacterAutoLoads": false
             }
         }
     }

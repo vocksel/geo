@@ -4,8 +4,11 @@ on:
   release:
     types: [published]
 
+env:
+  OUTPUT_NAME: "Geo.rbxm"
+
 jobs:
-  add-to-release:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -14,15 +17,17 @@ jobs:
       - name: Install toolchain
         uses: Roblox/setup-foreman@v1
         with:
-          version: "^1.0.0"
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Remove spec files
+        run: rm -rf **/*.spec.lua
+
       - name: Build
-        run: rojo build -o Geo.rbxmx
+        run: rojo build -o ${{ env.OUTPUT_NAME }}
 
       - name: Add model file to release
         uses: softprops/action-gh-release@v1
         with:
-          files: Geo.rbxmx
+          files: ${{ env.OUTPUT_NAME }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,3 +1,11 @@
+# Rojo
 /*.rbxl*
 /*.rbxm*
+
+# Selene
 roblox.toml
+
+# Wally
+/DevPackages
+/Packages
+/wally.lock
