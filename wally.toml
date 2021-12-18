@@ -1,0 +1,14 @@
+[package]
+name = "vocksel/geo"
+description = "A library for 2D shape recognition"
+version = "1.0.0"
+authors = [ "David Minnerly <me@vocksel.com>" ]
+license = "MIT"
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+exclude = [
+    "*.spec.lua"
+]
+
+[dev-dependencies]
+TestEZ = "roblox/testez@0.4.1"
