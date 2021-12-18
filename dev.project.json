@@ -1,5 +1,5 @@
 {
-    "name": "Geo (Dev)",
+    "name": "geo (dev)",
     "tree": {
         "$className": "DataModel",
         "ReplicatedStorage": {
