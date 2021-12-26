@@ -1,9 +1,21 @@
 --[[
-	Gets the area of any polygon.
+	Gets the area of an arbitrary polygon.
 
+	:::info
 	This is specifically used to find the area of the convex hull, but it can be
 	used in conjunction with anything so long as the points are in clockwise or
 	conterclockwise order.
+	:::
+
+	```lua
+	local sorted = ...
+	local hull = getConvexHull(sorted)
+	local area = getPolygonArea(hull)
+	```
+
+	@within Geo
+	@param points { Vector2 } -- Array of points that make up a polygon.
+	@return number -- Returns the area of the given polygon.
 ]]
 
 local t = require(script.Parent.t)

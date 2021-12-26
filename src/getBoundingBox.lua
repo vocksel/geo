@@ -1,17 +1,27 @@
---[[
-	Based on a series of 4+ points, 4 new points that represent the minimum
-	bounding box are returned.
-
-	The resulting rectangle is axis-aligned. This is important because we want
-	the user to specifically draw squares/rectangles that are aligned vertically
-	and horizontally. If either was rotated, the user would most likely be
-	drawing a diamon shape, which we don't want.
-]]
-
 local t = require(script.Parent.t)
 
 local check = t.array(t.Vector2)
 
+--[=[
+	@function getBoundingBox
+
+	Based on a series of 4+ points, 4 new points that represent the minimum
+	bounding box are returned.
+
+	The following image illustrates how this works. From a convex hull, the
+	enclosing rectangle surrounds the hull entirely.
+
+	![Enclosing rectangle surrounding a convex hull](/static/enclosing-rectangle.png)
+
+	:::note
+	Keep in mind that the resulting rectangle is always axis-aligned. That is,
+	there is no support for rotation.
+	:::
+
+	@within Geo
+	@param points { Vector2 } -- Array of points to get a bounding box around
+	@return { Vector2 } -- Returns 4 points that make up the bounding box
+]=]
 local function getBoundingBox(points: { Vector2 })
 	assert(check(points))
 

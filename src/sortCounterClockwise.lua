@@ -1,12 +1,3 @@
---[[
-	Given a list of points, the bottommost point is selected as an anchor and
-	every other point is sorted by its angle relative to the anchor.
-
-	The anchor is therefore the first point in the resulting list, and every
-	consecutive point has a counterclockwise angle to the anchor that is bigger
-	than the last.
-]]
-
 local t = require(script.Parent.t)
 
 local getPolarAngleCheck = t.tuple(t.Vector2, t.Vector2)
@@ -19,6 +10,32 @@ end
 
 local sortCounterClockwiseCheck = t.array(t.Vector2)
 
+--[=[
+	@function sortCounterClockwise
+
+	Sorts an array of points in counterclockwise order, returning the newly
+	sorted array.
+
+	```lua
+	local points = { Vector2.new(x1, y1), Vector2.new(x2, y2), Vector2.new(x3, y3), ... }
+	local sorted = sortCounterClockwise(points)
+	```
+
+	This function is crucial for `getConvexHull()` which relies on
+	counterclockwise order for calculating the hull.
+
+	:::note
+	The bottommost point is selected as an anchor and every other point is
+	sorted by its angle relative to the anchor. The anchor is therefore the
+	first point in the resulting list, and every consecutive point has a
+	counterclockwise angle to the anchor that is bigger than the last.
+	:::
+
+	@within Geo
+	@param points { Vector2 }
+	@return { Vector2 } -- Returns a new array where each Vector2 in `points` is
+		sorted in counterclockwise order.
+]=]
 local function sortCounterClockwise(points)
 	assert(sortCounterClockwiseCheck(points))
 

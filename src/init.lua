@@ -1,4 +1,8 @@
-return {
+--[=[
+	@class Geo
+]=]
+
+local Geo = {
 	-- Core API
 	detectShape = require(script.detectShape),
 	detectOrientation = require(script.detectOrientation),
@@ -18,3 +22,5 @@ return {
 	isChevron = require(script.shapes.isChevron),
 	sortCounterClockwise = require(script.sortCounterClockwise),
 }
+
+return Geo

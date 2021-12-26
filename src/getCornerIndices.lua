@@ -1,42 +1,3 @@
---[[
-	Gets an approximation of the number of corners a shape has.
-
-	Keep in mind that this approximation is fairly rough, but it gives a good
-	idea of how many sharp turns a shape has.
-
-	Usage:
-
-	    local points = { Vector2.new(), Vector2.new(), ... }
-	    getCornerIndices(points)
-
-	    -- Optionally increase the size of the max angle to be more forgiving about
-	    -- when a corner is detected.
-	    getCornerIndices(points, 140)
-
-	Params:
-
-	points: Array<Vector2>
-
-	    List of points that compose a shape. This should be sorted in some way.
-	    Using sortCounterClockwise should be plenty.
-
-	maxAngle: int = 100
-
-	    Controls the maximum angle for a corner to exist. The bigger this value,
-	    the less strict a corner is. Default: 100.
-
-	minAngle: int = 10
-
-	    Controls how big an angle has to be to still be counted as a corner.
-	    This value is primarily used to prevent the end of a line  from being
-	    counted as corners.
-
-	Returns an array of the indices where a corner exists in the points array.
-	The reason the indices are returned rather than the Vector2 itself is so its
-	easy to traverse relative to the corners. For example, if you have a corner
-	at index 10, then you can consider the points from 1-9 to be a line.
-]]
-
 local t = require(script.Parent.t)
 
 local cycleCheck = t.tuple(t.array(t.any), t.numberPositive)
@@ -51,6 +12,38 @@ end
 
 local getCornerIndicesCheck = t.tuple(t.array(t.Vector2), t.numberPositive, t.numberPositive)
 
+--[[
+    Gets an approximation of the number of corners a shape has.
+
+    ```lua
+    local points = { Vector2.new(x1, y1), Vector2.new(x2, y2), ... }
+    getCornerIndices(points)
+
+    -- Optionally increase the size of the max angle to be more forgiving about
+    -- when a corner is detected.
+    getCornerIndices(points, 140)
+    ```
+
+    :::caution
+    Always sort the points passed to this function using something like
+    `sortCounterClockwise()`.
+    :::
+
+    @param points { Vector 2 } -- List of points that compose a shape
+    @param maxAngle number -- Controls the maximum angle for a corner to exist.
+		The bigger this value, the less strict a corner is. (Default: 100).
+    @param minAngle number -- Controls how big an angle has to be to still be
+		counted as a corner. This value is primarily used to prevent the end of
+		a line  from being counted as corners. (Default: 10)
+	@return { number } -- Returns an array of the indices where a corner exists
+		in the points array.
+
+		:::info
+		The reason the indices are returned rather than the Vector2 itself is so its
+		easy to traverse relative to the corners. For example, if you have a corner
+		at index 10, then you can consider the points from 1-9 to be a line.
+		:::
+]]
 local function getCornerIndices(points: { Vector2 }, maxAngle: number, minAngle: number)
 	assert(getCornerIndicesCheck(points, maxAngle, minAngle))
 

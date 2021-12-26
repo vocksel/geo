@@ -3,6 +3,17 @@ local getCornerIndices = require(script.Parent.Parent.getCornerIndices)
 
 local check = t.array(t.Vector2)
 
+--[=[
+	@function isChevron
+
+	Checks if a series of points represent a Chevron shape by calculating the
+	sharp corners and where the points start and end.
+
+	@within Geo
+	@param points { Vector2 }
+	@return boolean -- Returns true if the points represent a Chevron. False
+		otherwise.
+]=]
 local function isChevron(points: { Vector2 }): { number }
 	assert(check(points))
 

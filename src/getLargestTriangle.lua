@@ -1,19 +1,27 @@
---[[
-	Given an ordered list of Vector2s, this function will calculate the 3 points
-	that make up the maximum-area triangle incribed within the full list.
-
-	This uses a mix of Algorithm 2 described in the paper "Maximum-Area Triangle
-	in a Convex Polygon, Revisited" as well as the sample c ode in this
-	StackOverflow post: https://stackoverflow.com/a/1621913
-
-	Returns an array of the 3 points that compose the maximum-area triangle.
-]]
-
 local t = require(script.Parent.t)
 local getTriangleArea = require(script.Parent.getTriangleArea)
 
 local check = t.array(t.Vector2)
 
+--[=[
+	@function getLargestTriangle
+
+	Given an ordered list of Vector2s, this function will calculate the 3 points
+	that make up the maximum-area triangle incribed within the full list.
+
+	![Maximum-area triangle inscribed within a convex hull](/static/largest-triangle.png)
+
+	:::info
+	This uses a mix of Algorithm 2 described in the paper "Maximum-Area Triangle
+	in a Convex Polygon, Revisited" as well as the sample code in this
+	[StackOverflow post](https://stackoverflow.com/a/1621913)
+	:::
+
+	@within Geo
+	@param points { Vector2 } -- Array of points to get the largest triangle of
+	@return { Vector2 } -- Returns an array of the 3 points that compose the
+		maximum-area triangle.
+]=]
 local function getLargestTriangle(points: { Vector2 })
 	assert(check(points))
 
