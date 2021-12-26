@@ -1,7 +1,3 @@
-local t = require(script.Parent.t)
-
-local check = t.array(t.Vector2)
-
 --[=[
 	@function getBoundingBox
 
@@ -23,6 +19,11 @@ local check = t.array(t.Vector2)
 	@param points { Vector2 } -- Array of points to get a bounding box around
 	@return { Vector2 } -- Returns 4 points that make up the bounding box
 ]=]
+
+local t = require(script.Parent.t)
+
+local check = t.array(t.Vector2)
+
 local function getBoundingBox(points: { Vector2 })
 	assert(check(points))
 

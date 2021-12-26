@@ -1,17 +1,3 @@
-local t = require(script.Parent.t)
-
-local cycleCheck = t.tuple(t.array(t.any), t.numberPositive)
-
--- Loops back to the start of the array if the index exceeds the array length.
--- This is used so we can check if the first point to see if it is a corner.
-local function cycle(array: table, index: number)
-	assert(cycleCheck(array, index))
-
-	return array[index] or array[index - #array]
-end
-
-local getCornerIndicesCheck = t.tuple(t.array(t.Vector2), t.numberPositive, t.numberPositive)
-
 --[=[
 	@function getCornerIndices
 
@@ -44,6 +30,21 @@ local getCornerIndicesCheck = t.tuple(t.array(t.Vector2), t.numberPositive, t.nu
 	@param minAngle number -- Controls how big an angle has to be to still be counted as a corner. This value is primarily used to prevent the end of a line  from being counted as corners. (Default: 10)
 	@return { number } -- Returns an array of the indices where a corner exists in the points array.
 ]=]
+
+local t = require(script.Parent.t)
+
+local cycleCheck = t.tuple(t.array(t.any), t.numberPositive)
+
+-- Loops back to the start of the array if the index exceeds the array length.
+-- This is used so we can check if the first point to see if it is a corner.
+local function cycle(array: table, index: number)
+	assert(cycleCheck(array, index))
+
+	return array[index] or array[index - #array]
+end
+
+local getCornerIndicesCheck = t.tuple(t.array(t.Vector2), t.numberPositive, t.numberPositive)
+
 local function getCornerIndices(points: { Vector2 }, maxAngle: number, minAngle: number)
 	assert(getCornerIndicesCheck(points, maxAngle, minAngle))
 

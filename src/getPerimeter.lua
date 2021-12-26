@@ -1,7 +1,3 @@
-local t = require(script.Parent.t)
-
-local check = t.array(t.Vector2)
-
 --[=[
 	@function getPerimeter
 
@@ -20,6 +16,11 @@ local check = t.array(t.Vector2)
 	@param points { Vector 2} -- Array of points to get the perimeter of
 	@return number -- The perimeter of the given points
 ]=]
+
+local t = require(script.Parent.t)
+
+local check = t.array(t.Vector2)
+
 local function getPerimeter(points: { Vector2 })
 	assert(check(points))
 

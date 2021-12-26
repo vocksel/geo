@@ -1,17 +1,3 @@
-local t = require(script.Parent.t)
-local sortCounterClockwise = require(script.Parent.sortCounterClockwise)
-local getConvexHull = require(script.Parent.getConvexHull)
-local getPolygonArea = require(script.Parent.getPolygonArea)
-local isLine = require(script.Parent.shapes.isLine)
-local isChevron = require(script.Parent.shapes.isChevron)
-local isCircle = require(script.Parent.shapes.isCircle)
-local isRectangle = require(script.Parent.shapes.isRectangle)
-local isSquare = require(script.Parent.shapes.isSquare)
-local isTriangle = require(script.Parent.shapes.isTriangle)
-local Shape = require(script.Parent.Shape)
-
-local check = t.array(t.Vector2)
-
 --[=[
 	@function detectShape
 
@@ -39,6 +25,21 @@ local check = t.array(t.Vector2)
 	@param points { Vector2 } -- Array of points to detect the shape of
 	@return Shape -- Returns the Shape of the
 ]=]
+
+local t = require(script.Parent.t)
+local sortCounterClockwise = require(script.Parent.sortCounterClockwise)
+local getConvexHull = require(script.Parent.getConvexHull)
+local getPolygonArea = require(script.Parent.getPolygonArea)
+local isLine = require(script.Parent.shapes.isLine)
+local isChevron = require(script.Parent.shapes.isChevron)
+local isCircle = require(script.Parent.shapes.isCircle)
+local isRectangle = require(script.Parent.shapes.isRectangle)
+local isSquare = require(script.Parent.shapes.isSquare)
+local isTriangle = require(script.Parent.shapes.isTriangle)
+local Shape = require(script.Parent.Shape)
+
+local check = t.array(t.Vector2)
+
 local function detectShape(points: { [number]: Vector2 })
 	assert(check(points))
 

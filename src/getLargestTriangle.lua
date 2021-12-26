@@ -1,8 +1,3 @@
-local t = require(script.Parent.t)
-local getTriangleArea = require(script.Parent.getTriangleArea)
-
-local check = t.array(t.Vector2)
-
 --[=[
 	@function getLargestTriangle
 
@@ -22,6 +17,12 @@ local check = t.array(t.Vector2)
 	@param points { Vector2 } -- Array of points to get the largest triangle of
 	@return { Vector2 } -- Returns an array of the 3 points that compose the maximum-area triangle.
 ]=]
+
+local t = require(script.Parent.t)
+local getTriangleArea = require(script.Parent.getTriangleArea)
+
+local check = t.array(t.Vector2)
+
 local function getLargestTriangle(points: { Vector2 })
 	assert(check(points))
 

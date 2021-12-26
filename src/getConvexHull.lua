@@ -1,15 +1,3 @@
-local t = require(script.Parent.t)
-
-local crossCheck = t.tuple(t.Vector2, t.Vector2, t.Vector2)
-
-local function cross(a, b, c)
-	assert(crossCheck(a, b, c))
-
-	return (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x)
-end
-
-local getConvexHullCheck = t.array(t.Vector2)
-
 --[=[
 	@function getConvexHull
 
@@ -32,6 +20,19 @@ local getConvexHullCheck = t.array(t.Vector2)
 	@param points { Vector2 } -- Array of points to get the convex hull of
 	@return { Vector2 } -- Returns an array of points that compose the convex hull of what was given
 ]=]
+
+local t = require(script.Parent.t)
+
+local crossCheck = t.tuple(t.Vector2, t.Vector2, t.Vector2)
+
+local function cross(a, b, c)
+	assert(crossCheck(a, b, c))
+
+	return (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x)
+end
+
+local getConvexHullCheck = t.array(t.Vector2)
+
 local function getConvexHull(points: { [number]: Vector2 })
 	assert(getConvexHullCheck(points))
 	assert(#points >= 3, "To get a convex hull there must be at least 3 points")

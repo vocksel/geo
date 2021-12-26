@@ -1,7 +1,3 @@
-local t = require(script.Parent.t)
-
-local check = t.tuple(t.Vector2, t.Vector2, t.Vector2)
-
 --[=[
 	@function getTriangleArea
 
@@ -27,6 +23,11 @@ local check = t.tuple(t.Vector2, t.Vector2, t.Vector2)
 	@param p3 Vector3
 	@return number -- The area of the given triangle
 ]=]
+
+local t = require(script.Parent.t)
+
+local check = t.tuple(t.Vector2, t.Vector2, t.Vector2)
+
 local function getTriangleArea(p1: Vector2, p2: Vector2, p3: Vector2)
 	assert(check(p1, p2, p3))
 
