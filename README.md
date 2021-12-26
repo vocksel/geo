@@ -25,20 +25,23 @@ end
 
 ## Installation
 
-### Wally
+Installing the package is quick and easy whether you use a package manager like [Wally](https://github.com/UpliftGames/wally) or work directly in Studio.
 
-If you are using [Wally](https://github.com/UpliftGames/wally), add the following to your `wally.toml` and run `wally install` to get a copy of the package.
+### Wally (Recommended)
 
-```
+Add the following to your `wally.toml` and run `wally install` to download the package.
+
+```toml
 [dependencies]
-Geo = "vocksel/geo@v1.0.1
+Geo = "vocksel/geo@1.0.1
 ```
 
-### Model File
+Make sure the resulting `Packages` folder is synced into your experience using a tool like [Rojo](https://github.com/rojo-rbx/rojo/).
+
+### Roblox Studio
 
 * Download a copy of the rbxm from the [releases page](https://github.com/vocksel/geo/releases/latest) under the Assets section.
 * Drag and drop the file into Roblox Studio to add it to your experience.
-
 ## Documentation
 
 You can find the Hue documentation [here](https://vocksel.github.io/geo).
