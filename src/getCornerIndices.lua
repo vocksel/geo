@@ -12,22 +12,24 @@ end
 
 local getCornerIndicesCheck = t.tuple(t.array(t.Vector2), t.numberPositive, t.numberPositive)
 
---[[
-    Gets an approximation of the number of corners a shape has.
+--[=[
+	@function getCornerIndices
 
-    ```lua
-    local points = { Vector2.new(x1, y1), Vector2.new(x2, y2), ... }
-    getCornerIndices(points)
+	Gets an approximation of the number of corners a shape has.
 
-    -- Optionally increase the size of the max angle to be more forgiving about
-    -- when a corner is detected.
-    getCornerIndices(points, 140)
-    ```
+	```lua
+	local points = { Vector2.new(x1, y1), Vector2.new(x2, y2), ... }
+	getCornerIndices(points)
 
-    :::caution
-    Always sort the points passed to this function using something like
-    `sortCounterClockwise()`.
-    :::
+	-- Optionally increase the size of the max angle to be more forgiving about
+	-- when a corner is detected.
+	getCornerIndices(points, 140)
+	```
+
+	:::caution
+	Always sort the points passed to this function using something like
+	`sortCounterClockwise()`.
+	:::
 
 	:::info
 	The reason the indices are returned rather than the Vector2 itself is so its
@@ -37,17 +39,11 @@ local getCornerIndicesCheck = t.tuple(t.array(t.Vector2), t.numberPositive, t.nu
 
 	@within Geo
 	@tag helper
-    @param points { Vector 2 } -- List of points that compose a shape
-    @param maxAngle number -- Controls the maximum angle for a corner to exist.
-		The bigger this value, the less strict a corner is. (Default: 100).
-    @param minAngle number -- Controls how big an angle has to be to still be
-		counted as a corner. This value is primarily used to prevent the end of
-		a line  from being counted as corners. (Default: 10)
-	@return { number } -- Returns an array of the indices where a corner exists
-		in the points array.
-
-
-]]
+	@param points { Vector 2 } -- List of points that compose a shape
+	@param maxAngle number -- Controls the maximum angle for a corner to exist. The bigger this value, the less strict a corner is. (Default: 100).
+	@param minAngle number -- Controls how big an angle has to be to still be counted as a corner. This value is primarily used to prevent the end of a line  from being counted as corners. (Default: 10)
+	@return { number } -- Returns an array of the indices where a corner exists in the points array.
+]=]
 local function getCornerIndices(points: { Vector2 }, maxAngle: number, minAngle: number)
 	assert(getCornerIndicesCheck(points, maxAngle, minAngle))
 
