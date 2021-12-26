@@ -1,8 +1,21 @@
---[[
-	Gets the perimeter of a convex object. Only use this with points that have a
-	defined shape, such as a rectangle or convex hull. If there are excess
-	points you will get incorrect results
-]]
+--[=[
+	@function getPerimeter
+
+	Gets the perimeter of a convex object.
+
+	Given an ordered list of points, this function counts up the distance between
+	every side length to get the perimeter of the geometric object.
+
+	:::caution
+	Only use this with points that have a defined shape, such as a rectangle or
+	convex hull. If there are excess points you will get incorrect results.
+	:::
+
+	@within Geo
+	@tag helper
+	@param points { Vector 2} -- Array of points to get the perimeter of
+	@return number -- The perimeter of the given points
+]=]
 
 local t = require(script.Parent.t)
 

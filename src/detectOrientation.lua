@@ -1,24 +1,33 @@
---[[
+--[=[
+	@function detectOrientation
+
 	Given a list of points, this function determines which orientation the shape
 	is facing.
 
-	Usage:
+	```lua
+	local points = { Vector2.new(x1, y1), Vector2.new(x2, y2), Vector2.new(x3, y3), ... }
 
-	    local points = { Vector2.new(), Vector2.new(), ... }
-	    local orientation = detectOrientation(points)
+	local orientation = detectOrientation(points)
 
-	    if orientation == Geo.Orientation.North then
-	        print("Shape is facing north")
-	    end
+	if orientation == Geo.Orientation.North then
+		print("The shape is facing up")
+	elseif orientation == Geo.Orientation.West then
+		print("The shape is facing left")
+	end
+	```
 
-	This only works for points that are determined to be Lines or Chevrons.
-	Every other shape such as circles and rectangles do not have a facing
-	direction. Triangles may be considered in the future, but for the time being
-	they are ommitted.
+	This only works for points that are determined to be a Line or Chevron.
+	Every other shape does not have a facing direction. Triangles may be
+	considered in the future, but for the time being they are ommitted.
 
-	Also note that lines use 8 cardinal directions, while chevrons only use 4
+	Also note that Lines use 8 cardinal directions, while Chevrons only use 4
 	(N, E, S, W).
-]]
+
+	@within Geo
+	@tag core
+	@param points { Vector2 } -- Array of points that compose a shape
+	@return Orientation
+]=]
 
 local t = require(script.Parent.t)
 local isLine = require(script.Parent.shapes.isLine)

@@ -1,0 +1,5 @@
+[home]
+enabled = true
+
+[docusaurus]
+tagline = "A library for analyzing 2D points to determine the geometric shape they represent."

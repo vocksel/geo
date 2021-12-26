@@ -3,9 +3,16 @@
 /*.rbxm*
 
 # Selene
-roblox.toml
+/roblox.toml
 
 # Wally
 /DevPackages
 /Packages
 /wally.lock
+
+# Moonwave
+/node_modules
+build
+
+# Other
+/*.log

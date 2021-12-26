@@ -1,7 +1,28 @@
---[[
-	Uses Heron's Formula to calculate the area of a triangle from any three
-	points.
-]]
+--[=[
+	@function getTriangleArea
+
+	Calculates the are of a triangle from any three points.
+
+	```lua
+	local area = getTriangleArea(
+		Vector2.new(x1, y1),
+		Vector2.new(x2, y2),
+		Vector2.new(x3, y3)
+	)
+	```
+
+	:::info
+	This function uses the Heron's Formula to calculate the area of a triangle from any three
+	points
+	:::
+
+	@within Geo
+	@tag helper
+	@param p1 Vector2
+	@param p2 Vector2
+	@param p3 Vector3
+	@return number -- The area of the given triangle
+]=]
 
 local t = require(script.Parent.t)
 

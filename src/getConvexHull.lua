@@ -1,11 +1,25 @@
---[[
-	Given a list of Vector2s, this function uses the Graham Scan algorithm to
-	iterate over them and return a new array of Vector2s which are the ones that
-	create a convex hull around the entire list of points.
+--[=[
+	@function getConvexHull
 
-	Remember to call sortCounterClockwise() on your list of points before
-	passing them in!
-]]
+	Uses an implementation of the [Graham Scan](https://en.wikipedia.org/wiki/Graham_scan)
+	algorithm to find the points that represent the convex hull of a list of points.
+
+	:::caution
+	The points passed to this function must pass through `sortCounterClockwise()`
+	first, otherwise you will get unexpected results.
+	:::
+
+	The following gif shows an example of how this works. Notice that only the
+	outer points are connected, and that the bottommost point is highlighted a
+	different color.
+
+	![Convex hull generation](/convex-hull-generation.gif)
+
+	@within Geo
+	@tag helper
+	@param points { Vector2 } -- Array of points to get the convex hull of
+	@return { Vector2 } -- Returns an array of points that compose the convex hull of what was given
+]=]
 
 local t = require(script.Parent.t)
 
