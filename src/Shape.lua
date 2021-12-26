@@ -11,7 +11,6 @@
 	.Chevron "Chevron"
 
 	@within Geo
-	@tag enum
 ]=]
 
 --[=[
@@ -20,8 +19,6 @@
 	A table containing all members of the `Shape` enum, e.g., `Geo.Shape.Rectangle`.
 
 	@within Geo
-	@readonly
-	@tag enums
 ]=]
 
 local Shape = {

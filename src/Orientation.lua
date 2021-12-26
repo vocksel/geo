@@ -3,7 +3,6 @@
 
 	@interface Orientation
 	@within Geo
-	@tag enum
 
 	.North "North"
 	.NorthEast "NorthEast"
@@ -21,8 +20,6 @@
 	A table containing all members of the `Orientation` enum, e.g., `Geo.Orientation.North`.
 
 	@within Geo
-	@readonly
-	@tag enums
 ]=]
 
 local Orientation = {
