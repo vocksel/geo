@@ -22,7 +22,7 @@
 	@within Geo
 ]=]
 
-local Orientation = {
+return {
 	North = "North",
 	NorthEast = "NorthEast",
 	East = "East",
@@ -32,5 +32,3 @@ local Orientation = {
 	West = "West",
 	NorthWest = "NorthWest",
 }
-
-return Orientation

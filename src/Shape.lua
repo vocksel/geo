@@ -21,7 +21,7 @@
 	@within Geo
 ]=]
 
-local Shape = {
+return {
 	Line = "Line",
 	Circle = "Circle",
 	Square = "Square",
@@ -29,5 +29,3 @@ local Shape = {
 	Triangle = "Triangle",
 	Chevron = "Chevron",
 }
-
-return Shape
