@@ -1,5 +1,10 @@
 --[=[
 	@class Geo
+
+	The functions tagged with `core` are the primary API of this package. All
+	others are helpers that are used in conjunction with the core API, but have
+	been exposed since they can be useful in contexts that are not related to
+	shape recognition.
 ]=]
 
 return {

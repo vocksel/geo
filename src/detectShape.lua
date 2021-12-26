@@ -35,6 +35,7 @@ local check = t.array(t.Vector2)
 	best course of action.
 
 	@within Geo
+	@tag core
 	@param points { Vector2 } -- Array of points to detect the shape of
 	@return Shape -- Returns the Shape of the
 ]=]

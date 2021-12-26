@@ -29,6 +29,14 @@ local getCornerIndicesCheck = t.tuple(t.array(t.Vector2), t.numberPositive, t.nu
     `sortCounterClockwise()`.
     :::
 
+	:::info
+	The reason the indices are returned rather than the Vector2 itself is so its
+	easy to traverse relative to the corners. For example, if you have a corner
+	at index 10, then you can consider the points from 1-9 to be a line.
+	:::
+
+	@within Geo
+	@tag helper
     @param points { Vector 2 } -- List of points that compose a shape
     @param maxAngle number -- Controls the maximum angle for a corner to exist.
 		The bigger this value, the less strict a corner is. (Default: 100).
@@ -38,11 +46,7 @@ local getCornerIndicesCheck = t.tuple(t.array(t.Vector2), t.numberPositive, t.nu
 	@return { number } -- Returns an array of the indices where a corner exists
 		in the points array.
 
-		:::info
-		The reason the indices are returned rather than the Vector2 itself is so its
-		easy to traverse relative to the corners. For example, if you have a corner
-		at index 10, then you can consider the points from 1-9 to be a line.
-		:::
+
 ]]
 local function getCornerIndices(points: { Vector2 }, maxAngle: number, minAngle: number)
 	assert(getCornerIndicesCheck(points, maxAngle, minAngle))

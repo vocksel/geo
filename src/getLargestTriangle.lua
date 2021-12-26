@@ -18,6 +18,7 @@ local check = t.array(t.Vector2)
 	:::
 
 	@within Geo
+	@tag helper
 	@param points { Vector2 } -- Array of points to get the largest triangle of
 	@return { Vector2 } -- Returns an array of the 3 points that compose the
 		maximum-area triangle.

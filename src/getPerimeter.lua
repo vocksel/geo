@@ -16,6 +16,7 @@ local check = t.array(t.Vector2)
 	:::
 
 	@within Geo
+	@tag helper
 	@param points { Vector 2} -- Array of points to get the perimeter of
 	@return number -- The perimeter of the given points
 ]=]

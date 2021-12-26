@@ -28,6 +28,7 @@ local getConvexHullCheck = t.array(t.Vector2)
 	![Convex hull generation](/static/convex-hull-generation.gif)
 
 	@within Geo
+	@tag helper
 	@param points { Vector2 } -- Array of points to get the convex hull of
 	@return { Vector2 } -- Returns an array of points that compose the convex hull of what was given
 ]=]

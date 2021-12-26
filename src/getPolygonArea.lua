@@ -1,4 +1,10 @@
---[[
+local t = require(script.Parent.t)
+
+local check = t.array(t.Vector2)
+
+--[=[
+	@function getPolygonArea
+
 	Gets the area of an arbitrary polygon.
 
 	:::info
@@ -14,14 +20,10 @@
 	```
 
 	@within Geo
+	@tag helper
 	@param points { Vector2 } -- Array of points that make up a polygon.
 	@return number -- Returns the area of the given polygon.
-]]
-
-local t = require(script.Parent.t)
-
-local check = t.array(t.Vector2)
-
+]=]
 local function getPolygonArea(points: { Vector2 })
 	assert(check(points))
 

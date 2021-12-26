@@ -19,6 +19,7 @@ local check = t.array(t.Vector2)
 	:::
 
 	@within Geo
+	@tag helper
 	@param points { Vector2 } -- Array of points to get a bounding box around
 	@return { Vector2 } -- Returns 4 points that make up the bounding box
 ]=]

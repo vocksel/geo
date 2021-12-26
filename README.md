@@ -39,10 +39,6 @@ Geo = "vocksel/geo@v1.0.1
 * Download a copy of the rbxm from the [releases page](https://github.com/vocksel/geo/releases/latest) under the Assets section.
 * Drag and drop the file into Roblox Studio to add it to your experience.
 
-## Helpers
-
-The above functions are the core of this library. However, since there are a lot of useful helper functions that are critical to getting to the point of shape recognition, they are exposed as well for all to make use of.
-
 ## Documentation
 
 You can find the Hue documentation [here](https://vocksel.github.io/geo).

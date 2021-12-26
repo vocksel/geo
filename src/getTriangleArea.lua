@@ -21,6 +21,7 @@ local check = t.tuple(t.Vector2, t.Vector2, t.Vector2)
 	:::
 
 	@within Geo
+	@tag helper
 	@param p1 Vector2
 	@param p2 Vector2
 	@param p3 Vector3

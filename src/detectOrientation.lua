@@ -141,6 +141,7 @@ local detectOrientationCheck = t.array(t.Vector2)
 	(N, E, S, W).
 
 	@within Geo
+	@tag core
 	@param points { Vector2 } -- Array of points that compose a shape
 	@return Orientation
 ]=]

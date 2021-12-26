@@ -32,6 +32,7 @@ local sortCounterClockwiseCheck = t.array(t.Vector2)
 	:::
 
 	@within Geo
+	@tag helper
 	@param points { Vector2 }
 	@return { Vector2 } -- Returns a new array where each Vector2 in `points` is
 		sorted in counterclockwise order.

@@ -1,3 +1,7 @@
+local t = require(script.Parent.t)
+
+local check = t.array(t.Vector2)
+
 --[=[
 	@function getSideLengths
 
@@ -13,16 +17,12 @@
 	:::
 
 	@within Geo
+	@tag helper
 	@param points { Vector2 } -- Array of points composing a rectangle
 	@return Vector2 -- Returns a Vector2 representing the side lengths of a
 		rectangle where the X component is the width, and the Y component is the
 		height.
 ]=]
-
-local t = require(script.Parent.t)
-
-local check = t.array(t.Vector2)
-
 local function getSideLengths(points)
 	assert(check(points))
 	assert(#points == 4, "To get the side length of a rectangle, there must be exactly 4 points given")
