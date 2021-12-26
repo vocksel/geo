@@ -9,7 +9,7 @@ local check = t.array(t.Vector2)
 	Given an ordered list of Vector2s, this function will calculate the 3 points
 	that make up the maximum-area triangle incribed within the full list.
 
-	![Maximum-area triangle inscribed within a convex hull](/static/largest-triangle.png)
+	![Maximum-area triangle inscribed within a convex hull](/largest-triangle.png)
 
 	:::info
 	This uses a mix of Algorithm 2 described in the paper "Maximum-Area Triangle

@@ -25,7 +25,7 @@ local getConvexHullCheck = t.array(t.Vector2)
 	outer points are connected, and that the bottommost point is highlighted a
 	different color.
 
-	![Convex hull generation](/static/convex-hull-generation.gif)
+	![Convex hull generation](/convex-hull-generation.gif)
 
 	@within Geo
 	@tag helper

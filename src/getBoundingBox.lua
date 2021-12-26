@@ -11,7 +11,7 @@ local check = t.array(t.Vector2)
 	The following image illustrates how this works. From a convex hull, the
 	enclosing rectangle surrounds the hull entirely.
 
-	![Enclosing rectangle surrounding a convex hull](/static/enclosing-rectangle.png)
+	![Enclosing rectangle surrounding a convex hull](/enclosing-rectangle.png)
 
 	:::note
 	Keep in mind that the resulting rectangle is always axis-aligned. That is,
