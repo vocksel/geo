@@ -19,9 +19,7 @@ local check = t.array(t.Vector2)
 	@within Geo
 	@tag helper
 	@param points { Vector2 } -- Array of points composing a rectangle
-	@return Vector2 -- Returns a Vector2 representing the side lengths of a
-		rectangle where the X component is the width, and the Y component is the
-		height.
+	@return Vector2 -- Returns a Vector2 representing the side lengths of a rectangle where the X component is the width, and the Y component is the height.
 ]=]
 local function getSideLengths(points)
 	assert(check(points))
